@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercícios JavaScript</title>
+    <style>
+        
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        p{
+            font-style: italic;
+        }
+        #solução{
+            background-color: #ffffff;
+            border-radius: 10px;
+            height: 500px;
+            width: 500px;
+            margin: auto;
+            color: #1a1a1a;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #iniciar{
+            background-color: #6610f2;
+            padding: 20px;
+            border-radius: 15px;
+            color: #ffffff;
+            border-style: none;
+            font-family: monospace;
+            width: 150px;
+        }
+
+        #res{
+            font-size: 50px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="enunciado">
+    <h1>Exercício 01</h1>
+    <h3> 1) Crie uma aplicação capaz de identificar a faixa etária com base na idade informada pelo 
+    usuário. Considere os seguintes critérios: </h3>
+    <ul>
+        <li>Se a idade informada for maior ou igual a 0 e menor que 15, exibir a mensagem “Criança”. </li>
+        <li>Se a idade informada for maior ou igual a 15 e menor que 30, exibir a mensagem “Jovem”. </li>
+        <li>Se a idade informada for maior ou igual a 30 e menor que 60, exibir a mensagem “Adulto”. </li>
+        <li>Se a idade informada for maior ou igual a 60, exibir a mensagem “Idoso”. </li>
+    </ul>
+    <p>
+    Fique à vontade para utilizar qualquer uma das funções aprendidas para exibição de dados 
+    para o usuário.</p>
+    </div>
+
+    <div id="solução">
+        <button onclick="iniciar()" id="iniciar">Começar</button>
+         <div id="res"></div>
+    </div>
+
+
+    <script>
+        function iniciar(){
+        let res = document.querySelector('div#res')   
+        let idade = Number(prompt("Qual a sua idade?"))
+        let botao = document.getElementById('iniciar')
+
+            if(idade < 0 ){
+                res.innerText = 'Digite um valor válido'
+                botao.innerText = 'Repetir'
+
+            }else if(idade >= 0 && idade < 15){
+
+            res.innerText = 'Criança'
+            botao.innerText = 'Repetir'
+
+           }else if(idade >= 15 && idade < 30){
+
+            res.innerText = 'Jovem'
+            botao.innerText = 'Repetir'
+
+           }else if(idade >= 30 && idade < 60){
+
+             res.innerText = 'Adulto'
+             botao.innerText = 'Repetir'
+
+           }else{
+            res.innerText = 'Idoso'
+            botao.innerText = 'Repetir'
+           }
+    
+
+        }
+    </script>
+</body>
+</html>
