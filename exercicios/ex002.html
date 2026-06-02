@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 002</title>
+    <style>
+        
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        p{
+            font-style: italic;
+        }
+        #solução{
+            background-color: #ffffff;
+            border-radius: 10px;
+            height: 500px;
+            width: 500px;
+            margin: auto;
+            color: #1a1a1a;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #iniciar{
+            background-color: #6f42c1;
+            padding: 20px;
+            border-radius: 15px;
+            color: #ffffff;
+            border-style: none;
+            font-family: monospace;
+            width: 150px;
+        }
+
+        #res{
+            font-size: 50px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        #form{
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <h1>Exercício 2</h1>
+
+    <div id="enunciado">
+
+   <h2> 2) Crie uma aplicação para efetuar o cálculo do índice de massa corporal.  
+Considere os seguintes critérios: </h2>
+<ol>
+    <li>Ao executar o script a aplicação deve solicitar a entrada do nome da pessoa. </li>
+    <li>Na sequência a aplicação deve solicitar que seja informada a altura da pessoa em 
+centímetros.</li>
+    <li>Na sequência a aplicação deve solicitar que seja informado o peso da pessoa.</li>
+    <li>Após as estradas de dados, atente-se a conversão das informações para dados do tipo 
+float.</li>
+        <li>Converta a altura recebida em centímetros para metros. (basta dividir a altura por 
+100).</li>
+<li>Internamente a aplicação deve executar o cálculo do índice de massa corporal através 
+da expressão: M = peso (quilos) ÷ altura² </li>
+<li>Após identificar o índice de massa corporal o sistema deverá classificar em faixas 
+descritivas utilizando os critérios abaixo: 
+        <ol type="a">
+            <li>Se M estiver abaixo de 16 : Baixo peso muito grave</li>
+            <li>Se M estiver entre 16 e 16,99:  Baixo peso grave </li>
+            <li>Se M estiver entre 17 e 18,49: Baixo peso </li>
+            <li>Se M estiver entre 18,50 e 24,99: Peso normal </li>
+            <li>Se M estiver entre 25 e 29,99: Sobrepeso </li>
+            <li>Se M estiver entre 30 e 34,99: Obesidade grau I </li>
+            <li>Se M estiver entre 35 e 39,99: Obesidade grau II </li>
+            <li>Se M for maior que 40: Obesidade grau III</li>
+        </ol>
+</li>
+
+    <li>Ao término o sistema deve fornecer a seguinte saída para o usuário:</li>
+</ol>
+
+<p>“&lt;Nome&gt; possui índice de massa corporal igual a &lt;m&gt;, sendo classificado como: 
+&lt;classificacao&gt;.”</p>
+
+<p>*As informações em vermelho são variáveis e devem ser substituídas pelos seus respectivos 
+valores calculadas dentro da aplicação.</p>
+    
+    </div>
+
+    <div id="solução">
+        
+    
+            <form id="form">
+                <label for="nome">Nome:
+                <input type="text" name="nome" id="nome" required placeholder="Digite seu nome">
+                </label>
+
+                <label for="altura">Altura(cm)
+                <input type="number" name="altura" id="altura" required placeholder="Digite sua altura">
+                </label>
+
+                <label for="peso">Peso
+                <input type="number" name="peso" id="peso" required placeholder="Digite seu peso">
+                </label>
+
+                <input type="submit" value="Enviar">
+            </form>
+    
+            <button onclick="script()" id="iniciar">Começar</button>
+            <div id="res"></div>
+
+        </div>
+
+
+    <script>
+
+        var form = document.querySelector('#form')
+
+
+        function script(){
+            form = document.querySelector('#form')
+            form.style.display = 'flex'
+
+        }
+    </script>
+</body>
+</html>
