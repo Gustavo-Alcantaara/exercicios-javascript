@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 003</title>
+    <style>
+        
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        p{
+            font-style: italic;
+        }
+        #solução{
+            background-color: #ffffff;
+            border-radius: 10px;
+            height: 500px;
+            width: 500px;
+            margin: auto;
+            color: #1a1a1a;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #script{
+            background-color: #6f42c1;
+            padding: 20px;
+            border-radius: 15px;
+            color: #ffffff;
+            border-style: none;
+            font-family: monospace;
+            width: 150px;
+        }
+
+        #res{
+            font-size: 50px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="enunciado">
+        <h1>Exercício 3</h1>
+   <h2>3) Crie uma aplicação para efetuar cálculo aritméticos de soma e subtração.  
+Considere os seguintes critérios: </h2>
+
+<ol>
+<li>Ao executar o script a aplicação deve solicitar a entrada de um número, seguido de 
+uma operação de soma ou subtração e posteriormente seguido de um segundo 
+número. </li>
+<li>A operação deve ser inserida pelo usuário de forma textual, ou seja, quando o sistema 
+solicita a operação o usuário deve informar o texto ‘soma’ ou ‘subtração’ (sem as 
+aspas). </li>
+<li>Na sequência o sistema deve enviar os parâmetros para uma função efetuar o devido 
+cálculo. Exemplo: calculo(num1, num2, operacao). </li>
+<li>A função deve executar o cálculo com base na operação informada pelo usuário e na 
+sequência deve retornar o valor encontrado. </li>
+<li>Ao término o sistema deve fornecer a seguinte saída para o usuário: 
+“O resultado é: <span style="color: red;">&lt;resultado&gt;.</span>” </li>
+
+<p>*A informação em vermelho é uma variável e deve ser substituída pelo seu respectivo valor 
+calculada dentro da aplicação. </p>
+
+</ol>
+    </div>
+
+    <div id="solução">
+
+        <div id="res"></div>
+        <button id="script">Começar</button>
+
+    </div>
+
+
+    <script>
+        const btn = window.document.getElementById('script')
+        const res = document.getElementById('res')
+        let resultado;
+
+        btn.addEventListener("click", function(){
+
+            let n1 = Number(prompt("Digite um número"))
+            let operador = prompt("Digite a operação (soma, subtracao, divisao, multiplicação)")
+            let n2 = Number(prompt("Digite outro número"))
+
+            operador = operador.toUpperCase()
+
+            if(operador == "SOMA"){
+               resultado = soma(n1,n2)
+               res.innerText = `O resultado é: ${resultado}`
+            }else
+             if(operador == "SUBTRACAO"){
+               resultado = sub(n1,n2)
+               res.innerText = `O resultado é: ${resultado}`
+            }else
+             if(operador == "MULTIPLICAÇÃO"){
+               resultado = multi(n1,n2)
+               res.textContent = `O resultado é: ${resultado}`  
+            }else
+             if(operador == "DIVISAO"){
+               resultado = divi(n1,n2)
+               res.textContent = `O resultado é: ${resultado}`  
+            }else{
+                alert('Digite um operador válido')
+            }
+
+            btn.innerText = 'Repetir'
+
+          })
+
+       
+
+        function soma(n1, n2){
+            resultado = n1 + n2;
+            return resultado;
+        }
+        function sub(n1, n2){
+            resultado = n1 - n2;
+            return resultado;
+        }
+        function multi(n1, n2){
+            resultado = n1 * n2;
+            return resultado;
+        }
+        function divi(n1, n2){
+           resultado = n1 / n2;
+           return resultado;
+        }
+        
+    </script>
+</body>
+</html>
