@@ -132,7 +132,7 @@ valores calculadas dentro da aplicação.</p>
 
     <div id="solução">
         
-    
+            <h3 style="display: none;">Calculo de IMC</h3>
             <form action="" method="post" id="form">
                 <div>
                 <label for="nome">Nome</label>
@@ -161,6 +161,7 @@ valores calculadas dentro da aplicação.</p>
 
 
     <script>
+        const titulo = document.querySelector('h3')
         const form = document.querySelector('#form');
         const btn = document.querySelector('#submit');
         const comecar = document.querySelector("#script");
@@ -182,46 +183,33 @@ valores calculadas dentro da aplicação.</p>
 
 
             if(imc < 16){
-                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Baixo peso muito grave`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Baixo peso muito grave`;      
             } else 
             if(imc >= 16 && imc < 17){
                 res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Baixo peso grave`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
             }else
             if(imc >= 17 && imc < 18.50){
                 res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Baixo peso`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
             }else
             if(imc >= 18.50 && imc < 25){
                 res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Peso normal`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
             }else
             if(imc >= 25 && imc < 30){
                 res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Sobrepeso`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
             }else
             if(imc >= 30 && imc < 35){
                 res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Obesidade grau I`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
             }else
             if(imc >= 35 && imc < 40){
                 res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Obesidade grau II`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
             }else{
                 res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Obesidade grau III`;
-                form.style.display = 'none';
-                comecar.innerText = 'Repetir';
             }
 
-
+            titulo.style.display = 'none'
+            comecar.style.display = 'block'
+            form.style.display = 'none';
+            comecar.innerText = 'Repetir';
 
 
         });
@@ -229,7 +217,9 @@ valores calculadas dentro da aplicação.</p>
        comecar.addEventListener("click", function(){
             form.style.display = 'flex';
             res.innerText = "";
-            form.reset()
+            form.reset();
+            titulo.style.display = 'block';
+            comecar.style.display = 'none';
         });
     </script>
 </body>
