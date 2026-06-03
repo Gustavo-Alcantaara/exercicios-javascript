@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 004</title>
+    <style>
+        
+        body{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        p{
+            font-style: italic;
+        }
+        #solução{
+            background-color: #ffffff;
+            border-radius: 10px;
+            height: 500px;
+            width: 500px;
+            margin: auto;
+            color: #1a1a1a;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #script{
+            background-color: #6f42c1;
+            padding: 20px;
+            border-radius: 15px;
+            color: #ffffff;
+            border-style: none;
+            font-family: monospace;
+            width: 150px;
+        }
+
+        #res{
+            font-size: 50px;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        #form{
+            display: none;
+            width: 30%;
+            margin: 20px;
+        }
+
+        #texto{
+            width: 100%;
+            height: 30px;
+            border-style: solid;
+            border-radius: 15px;
+            padding: 5px;
+            font-size: 100%;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div id="enunciado">
+        <h1>Exercício 4</h1>
+       <h2>4) Crie um campo &lt;input type="text"&gt; e aplique os seguintes controles com base nos 
+eventos abaixo:</h2>  
+        <ul>
+            <li>No evento de foco modifique o background do input para amarelo.</li>
+            <li>Quando o campo perder o foco, recupere o seu respectivo valor e:
+                <ul>
+                    <li>Caso o conteúdo contido no campo tenha menos de 3 caracteres o mesmo 
+deve ter seu background alterado para vermelho.</li>
+                        <li>Caso o conteúdo contido no campo tenha 3 caracteres ou mais o background 
+deve ser alterado para verde.</li>
+                </ul>
+            </li> 
+</ul>
+ 
+    </div>
+
+    <div id="solução">
+        <form action="" method="post" id="form">
+            <input type="text" name="texto" id="texto">
+        </form>
+        <button id="script">Começar</button>
+    </div>
+
+
+    <script>
+      const btn = document.querySelector("#script")
+      const form = document.querySelector("#form")
+      const input = document.querySelector("#texto")
+        
+      btn.addEventListener("click", function(){
+        form.style.display = 'flex';
+        btn.innerText = 'Repetir';
+
+        if(btn.innerText == 'Repetir'){
+            form.reset();
+            input.style.backgroundColor = '#ffffff'
+        }
+
+      })
+
+      input.addEventListener("focus", function(){
+        input.style.backgroundColor = '#ffc107';
+      })
+      input.addEventListener("blur", function(event){
+        event.preventDefault();
+
+        if(texto.value.trim().length < 3){
+            input.style.backgroundColor = '#dc3545';
+        }else{
+            input.style.backgroundColor = '#198754';
+        }
+
+      })
+      
+
+    </script>
+</body>
+</html>
