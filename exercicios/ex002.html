@@ -46,11 +46,43 @@
 
         #form{
             display: none;
-            justify-content: center;
+            justify-content: center;  
             align-items: center;
             flex-direction: column;
+            width: 55%;
+            height: 60%;
+            margin: 10px;
+            border-radius: 15px;
+            padding: 15px;
+            background-color: #6f42c1;
+            color: #ffffff;
         }
 
+        #form div input{
+            height: 50px;
+            border-radius: 15px;
+            border-style: none;
+            border-width: 1px;
+            border-color: #1a1a1a;
+            
+        }
+
+        #form div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 5px;
+        }
+
+        #submit{
+            width: 50%;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border-style: none;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
 
     </style>
 </head>
@@ -101,38 +133,104 @@ valores calculadas dentro da aplicação.</p>
     <div id="solução">
         
     
-            <form id="form">
-                <label for="nome">Nome:
+            <form action="" method="post" id="form">
+                <div>
+                <label for="nome">Nome</label>
                 <input type="text" name="nome" id="nome" required placeholder="Digite seu nome">
-                </label>
+                </div>
 
-                <label for="altura">Altura(cm)
+                <div>
+                <label for="altura">Altura(cm)</label>
                 <input type="number" name="altura" id="altura" required placeholder="Digite sua altura">
-                </label>
+                </div>
 
-                <label for="peso">Peso
+                <div>
+                <label for="peso">Peso</label>
                 <input type="number" name="peso" id="peso" required placeholder="Digite seu peso">
-                </label>
+                </div>
 
-                <input type="submit" value="Enviar">
+                <input type="submit" value="Enviar" id="submit">
+                
+
             </form>
-    
-            <button onclick="script()" id="script">Começar</button>
-            <div id="res"></div>
+             <div id="res"></div>
+            <button id="script">Começar</button>
+            
 
         </div>
 
 
     <script>
+        const form = document.querySelector('#form');
+        const btn = document.querySelector('#submit');
+        const comecar = document.querySelector("#script");
+        const res = window.document.querySelector('#res');
 
-        var form = document.querySelector('#form')
+        btn.addEventListener("click", function(event){
+            event.preventDefault();
+
+            let imc;
+
+            let nome = document.querySelector("#nome").value;
+            let altura = document.querySelector("#altura").value;
+            let peso = document.querySelector("#peso").value;
+            altura = parseFloat(altura);
+            peso = parseFloat(peso);
+
+            altura = altura/100;
+            imc = peso/(altura ** 2);
 
 
-        function script(){
-            form = document.querySelector('#form')
-            form.style.display = 'flex'
+            if(imc < 16){
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Baixo peso muito grave`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            } else 
+            if(imc >= 16 && imc < 17){
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Baixo peso grave`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            }else
+            if(imc >= 17 && imc < 18.50){
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Baixo peso`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            }else
+            if(imc >= 18.50 && imc < 25){
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Peso normal`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            }else
+            if(imc >= 25 && imc < 30){
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Sobrepeso`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            }else
+            if(imc >= 30 && imc < 35){
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Obesidade grau I`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            }else
+            if(imc >= 35 && imc < 40){
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Obesidade grau II`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            }else{
+                res.innerText = `${nome} possui índice de massa corporal igual a ${imc.toFixed(2)} sendo classificado como: Obesidade grau III`;
+                form.style.display = 'none';
+                comecar.innerText = 'Repetir';
+            }
 
-        }
+
+
+
+        });
+
+       comecar.addEventListener("click", function(){
+            form.style.display = 'flex';
+            res.innerText = "";
+            form.reset()
+        });
     </script>
 </body>
 </html>
